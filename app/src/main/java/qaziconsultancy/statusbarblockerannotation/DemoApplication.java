@@ -3,14 +3,15 @@ package qaziconsultancy.statusbarblockerannotation;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.WindowManager;
 
 
 public class DemoApplication extends Activity {
 
     @JamStatusBar
     Context context;
+    WindowManager manager;
+    StatusBarTouchInterceptor view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,21 +27,28 @@ public class DemoApplication extends Activity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.demo_application, menu);
-        return true;
+    protected void onDestroy() {
+        if(manager != null && view != null){
+            try {
+                manager.removeView(view);
+            }
+            catch (IllegalArgumentException e){
+                e.printStackTrace();
+            }
+        }
+        super.onDestroy();
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+    protected void onPause() {
+        if(manager != null && view != null){
+            try {
+                manager.removeView(view);
+            }
+            catch (IllegalArgumentException e){
+                e.printStackTrace();
+            }
         }
-        return super.onOptionsItemSelected(item);
+        super.onPause();
     }
 }
