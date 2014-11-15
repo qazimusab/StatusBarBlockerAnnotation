@@ -2,9 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="qaziconsultancy.statusbarblockerannotation" >
 
-    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
-    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
 
     <application
         android:allowBackup="true"

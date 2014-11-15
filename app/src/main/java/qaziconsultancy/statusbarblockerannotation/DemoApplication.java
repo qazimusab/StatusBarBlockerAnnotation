@@ -3,21 +3,20 @@ package qaziconsultancy.statusbarblockerannotation;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.view.WindowManager;
 
 
 public class DemoApplication extends Activity {
 
     @JamStatusBar
     Context context;
-    WindowManager manager;
-    StatusBarTouchInterceptor view;
+//    WindowManager manager;
+//    StatusBarTouchInterceptor view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_demo_application);
-        context = getBaseContext();
+        context = getApplicationContext();
     }
 
     @Override
@@ -26,7 +25,7 @@ public class DemoApplication extends Activity {
         JamStatusBarProcessor.jamStatusBar(this);
     }
 
-    @Override
+/*    @Override
     protected void onDestroy() {
         if(manager != null && view != null){
             try {
@@ -50,5 +49,5 @@ public class DemoApplication extends Activity {
             }
         }
         super.onPause();
-    }
+    }*/
 }
